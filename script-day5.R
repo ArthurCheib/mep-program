@@ -2,7 +2,7 @@
 library(gapminder)
 library(tidyverse)
 
-# Recap of Day 1
+# Recap of Day 4
 # What did we learn yesterday?
 # - Basics of R programming
 # - What the assignment operator is and what it does: <-
@@ -16,59 +16,52 @@ library(tidyverse)
 # It is based on the tidy data principles
 # A set of tools that make data manipulation easier
 
-# The gapminder dataset contains yearly information of 142 countries including:
-# - life expectancy
-# - GDP per capita
-# - population
+## However, data is rarely read to be plotted.
+# In most cases, there is the need of data manipulation before plotting.
+# This is where the tidyverse package comes in handy.
 
-# Load the gapminder dataset (sometimes our data is already loaded. Soon, we will learn about `importing`)
-data(gapminder)
 
-# Let's take a look at the gapminder dataset
-head(gapminder, 10)
+
+# Before we dive into tidyverse, let's take a look at our visualization goal for today!
+## Image 1
+## Image 2
+
+# However, to recreate these visualizations, we need to manipulate the data first.
+
+# Let's think together. What are the steps we need to take to recreate image 1?
+# a) What year are we interested in? How can we keep only those rows?
+# b) What columns do we need? How can we select them?
+
+
+
 
 # Tool 1: select
 # select is used to choose specific columns from a data frame
 # It helps in subsetting columns (not rows)
 
 # Selecting specific columns (by column names)
-selected_data <- saudi_data %>% 
-  select(country, year, lifeExp)
+
 
 # Display the selected columns
-head(selected_data)
+
 
 # Selecting specific columns (by column positions)
-selected_data_pos <- saudi_data %>% 
-  select(1, 2, 3)
 
-# Display the selected columns by positions
-head(selected_data_pos)
+
 
 # Dropping specific columns
-dropped_data <- saudi_data %>% 
-  select(-country, -year)
 
-# Display the data after dropping columns
-head(dropped_data)
+
 
 # Tool 2: filter
 # filter is used to select rows that meet certain conditions
 # It helps in subsetting rows (not columns)
 
-# Filtering rows based on the year 2007
-filtered_data_year <- gapminder %>% 
-  filter(year == 2007)
+# Filtering rows based on the year?
 
-# Display the filtered rows
-head(filtered_data_year)
 
-# Filtering rows to keep only Saudi Arabia
-filtered_data_country <- gapminder %>% 
-  filter(country == 'Saudi Arabia')
 
-# Display the filtered rows
-head(filtered_data_country)
+# Parenthesis: examples of filtering rows based on multiple conditions
 
 # Filtering rows based on continent Asia and life expectancy greater than 70
 filtered_data_continent_lifeExp <- gapminder %>% 
@@ -90,50 +83,9 @@ head(filtered_data_continent_lifeExp)
 # - & (and)
 # - | (or)
 
-# Tool 3: mutate
-# mutate is used to create new columns in a data frame
-# It can create new columns based on existing columns
 
-# Creating a new column 'GDP'
-mutated_data <- gapminder %>% 
-  mutate(GDP = gdpPercap * pop)
+## Okay, since the data is now ready, let's recreate image 1!
 
-# Display the data with the new column
-head(mutated_data)
-
-# Tool 4: arrange
-# arrange is used to sort rows in a data frame
-
-# Sorting rows based on the year column
-arranged_data <- gapminder %>% 
-  arrange(year)
-
-# Display the sorted rows
-head(arranged_data)
-
-# Sorting rows based on the year column in descending order
-arranged_data_desc <- gapminder %>% 
-  arrange(desc(year), lifeExp)
-
-# Display the sorted rows in descending order
-head(arranged_data_desc)
-
-# Tools 5 & 6: group_by & summarize
-# group_by is used to group rows in a data frame
-# summarize is used to summarize grouped rows
-
-# Calculating the average life expectancy by year
-grouped_data <- gapminder %>% 
-  group_by(year) %>% 
-  summarize(avg_lifeExp = mean(lifeExp))
-
-# Display the grouped and summarized data
-head(grouped_data)
-
-# Calculating the average life expectancy by year and continent
-grouped_data_continent <- gapminder %>% 
-  group_by(year, continent) %>% 
-  summarize(avg_lifeExp = mean(lifeExp))
-
-# Display the grouped and summarized data by year and continent
-head(grouped_data_continent)
+# What are the two other elements we need to add to have a ggplot?
+# Element 1: ?
+# Element 2: ?
